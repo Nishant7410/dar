@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Register Form</title>
+
+</head>
+<body><center>
+<form><fieldset>
+<h1>Register</h1>
+Name:<br> <input type="text" name="Name" id="name" required/><br><br>
+Email :<br> <input type="email" name="Email" id="email" required/><br><br>
+Password :<br> <input type="password" name="password" id="password" required/><br><br>
+Phone No.:<br> <input type="number" name="phone" id='phone' required/><br><br>
+    <button type="submit" onclick='register1()'>Register</button>
+</fieldset>
+</form>
+</center>
+<script>
+var arr=[];   
+function register1()
+{
+    console.log('hello');
+        var c=0;
+    var name=document.getElementById('name').value;
+    var email=document.getElementById('email').value;
+    var password=document.getElementById('password').value;
+    var phone=document.getElementById('phone').value;
+    var obj=new Object();
+    obj.name=name;
+    obj.email=email;
+    obj.password=password;
+    obj.phone=phone;
+    if(localStorage.getItem('data')!=null)
+        arr=JSON.parse(localStorage.getItem('data'));
+
+    for(var i=0;i<arr.length;i++)
+        if(arr[i].email==obj.email)
+           c=1;
+    if(c==1)
+        alert('This mail is already used');
+    else
+        {
+    arr.push(obj);
+    
+    localStorage.setItem('data',JSON.stringify(arr));
+    alert('user register');
+        
+        }
+}
+</script>
+</body>
+</html>
+        

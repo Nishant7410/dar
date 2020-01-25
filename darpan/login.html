@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Login Form</title>
+
+</head>
+<body>
+<div><fieldset>
+<center>
+<h1>Create An Account</h1>
+Email :<br> <input type="text" name="Email" id="email"><br><br>
+Password:<br> <input type="password" name="Password" id="password"><br><br>
+    <button type="submit" id="login">Login</button>
+    <button type="submit" id="register">Register</button>
+    </center>   
+</fieldset>
+</div>
+<script>
+var login=document.getElementById('login');
+var register=document.getElementById('register');
+login.onclick=function(){
+    var c=0;
+    var name=document.getElementById('email');
+    var password=document.getElementById('password');
+    var obj=JSON.parse(localStorage.getItem('data'));
+    console.log(name.value);
+        console.log(password.value);
+
+    console.log(obj);
+    console.log(obj.length);
+     for(var i=0;i<obj.length;i++)
+         if(obj[i].email==name.value&&obj[i].password==password.value)
+             c=1;
+    if(c==0)
+        alert('User not exist');
+    else
+        window.location='./User_data.html';
+        
+    
+    
+}   
+register.onclick=function(){
+    window.location='./register.html';
+}
+</script>
+</body>
+</html>
+        
